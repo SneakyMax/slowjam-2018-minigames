@@ -28,6 +28,7 @@ namespace Game
 
         private IList<Collider2D> colliders;
         private IList<Interactable> interactables;
+        private Animator animator;
 
         private void Awake()
         {
@@ -35,6 +36,12 @@ namespace Game
 
             colliders = GetComponentsInChildren<Collider2D>();
             interactables = new List<Interactable>();
+            animator = GetComponentInChildren<Animator>();
+        }
+
+        private void Start()
+        {
+            animator.SetBool("IsOnGround", true);
         }
 
         private void Update()
@@ -104,17 +111,12 @@ namespace Game
 
             if (Mathf.Abs(InputManager.Horizontal) < 0.1)
             {
-                body.velocity = new Vector2(
-                    0,
-                    body.velocity.y);
+                body.velocity = new Vector2(0, body.velocity.y);
             }
 
             if (Mathf.Abs(InputManager.Vertical) < 0.1)
             {
-                body.velocity = new Vector2(
-                    body.velocity.x,
-                    0);
-
+                body.velocity = new Vector2(body.velocity.x, 0);
             }
         }
 
@@ -141,6 +143,8 @@ namespace Game
                 isInAir = true;
                 body.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
                 lastJumpTime = Time.time;
+                animator.SetTrigger("Jump");
+                animator.SetBool("IsOnGround", false);
             }
         }
 
@@ -199,6 +203,7 @@ namespace Game
                 if (Mathf.Abs(Vector2.Dot(contact.normal, Vector2.up)) > 0.9)
                 {
                     isInAir = false;
+                    animator.SetBool("IsOnGround", true);
                 }
 
                 if (currentLadder != null && InputManager.Vertical < -0.5)
