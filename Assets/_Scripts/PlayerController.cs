@@ -14,6 +14,9 @@ namespace Game
 
         public float LadderHorizontalSpeed = 1;
 
+        public SpriteRenderer ArrowUp;
+        public SpriteRenderer ExclamationPoint;
+
         private Rigidbody2D body;
 
         private bool isInAir;
@@ -24,12 +27,14 @@ namespace Game
         private float maxY;
 
         private IList<Collider2D> colliders;
+        private IList<Interactable> interactables;
 
         private void Awake()
         {
             body = GetComponent<Rigidbody2D>();
 
             colliders = GetComponentsInChildren<Collider2D>();
+            interactables = new List<Interactable>();
         }
 
         private void Update()
@@ -39,7 +44,22 @@ namespace Game
                 currentLadder = currentLadderCan;
             }
 
-            maxY = colliders.Max(x => x.bounds.max.y);
+            //maxY = colliders.Max(x => x.bounds.max.y);
+            maxY = transform.position.y;
+
+            ArrowUp.gameObject.SetActive(currentLadderCan != null && currentLadder == null);
+            ExclamationPoint.gameObject.SetActive(interactables.Count > 0);
+
+            TryInteract();
+        }
+
+        private void TryInteract()
+        {
+            if (InputManager.Interact && interactables.Count > 0)
+            {
+                var closest = interactables.OrderBy(x => x.Collider.Distance(colliders.First())).First();
+                closest.Interact();
+            }
         }
 
         public void FixedUpdate()
@@ -132,6 +152,11 @@ namespace Game
                 if (maxY < ladder.MaxHeight)
                     currentLadderCan = ladder;
             }
+
+            if (other.gameObject.GetComponent<Interactable>())
+            {
+                interactables.Add(other.gameObject.GetComponent<Interactable>());
+            }
         }
 
         private void OnTriggerStay2D(Collider2D other)
@@ -153,13 +178,21 @@ namespace Game
             {
                 currentLadderCan = null;
             }
+
+            if (other.gameObject.GetComponent<Interactable>())
+            {
+                interactables.Remove(other.gameObject.GetComponent<Interactable>());
+            }
         }
 
         private void OnCollisionStay2D(Collision2D collision)
         {
-            if (Time.time - lastJumpTime < 0.5)
+            if (!collision.enabled)
                 return;
 
+            if (Time.time - lastJumpTime < 0.5)
+                return;
+            
             var contacts = collision.contacts;
             foreach(var contact in contacts)
             {

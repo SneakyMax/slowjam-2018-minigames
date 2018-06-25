@@ -4,9 +4,9 @@ namespace Game
 {
     public class Ladder : MonoBehaviour
     {
-        public float MaxHeight { get; set; }
+        public float MaxHeight;
 
-        public void Start()
+        public void Awake()
         {
             var bounds = GetComponent<Collider2D>().bounds;
             MaxHeight = bounds.max.y;
