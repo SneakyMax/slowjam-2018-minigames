@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 namespace Game
 {
@@ -15,21 +14,10 @@ namespace Game
 
         public float[] SaturationArray;
 
-        private PostProcessVolume volume;
-        private PostProcessProfile profile;
-        private Desaturator settings;
-
         public void Awake()
         {
             Instance = this;
             SaturationArray = Enumerable.Range(0, 360).Select(x => 1.0f).ToArray();
-        }
-
-        public void Start()
-        {
-            volume = GetComponent<PostProcessVolume>();
-            profile = volume.profile;
-            profile.TryGetSettings(out settings);
         }
 
         private float[] GetSaturationArray()
@@ -57,7 +45,6 @@ namespace Game
 
                 var a2 = (1 - Mathf.Cos(a * Mathf.PI)) / 2;
                 arr[i] = current.Value.Value * (1 - a2) + next.Value.Value * a2;
-                //arr[i] = Mathf.Lerp(current.Value.Value, next.Value.Value, a);
             }
 
             return arr;

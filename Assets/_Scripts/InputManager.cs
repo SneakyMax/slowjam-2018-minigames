@@ -40,7 +40,7 @@ namespace Game
 
         public static float Vertical
         {
-            get { return KeyboardOrControllerAxis(new [] { KeyCode.W, KeyCode.UpArrow }, new [] { KeyCode.S, KeyCode.DownArrow }, x => x.Left.Y); }
+            get { return KeyboardOrControllerAxis(new [] { KeyCode.S, KeyCode.DownArrow }, new [] { KeyCode.W, KeyCode.UpArrow }, x => x.Left.Y); }
         }
 
         public static bool Interact
