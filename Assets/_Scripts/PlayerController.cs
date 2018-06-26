@@ -6,6 +6,8 @@ namespace Game
 {
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController Instance { get; private set; }
+
         public float MoveSpeed = 4;
 
         public float JumpForce = 3;
@@ -26,15 +28,18 @@ namespace Game
 
         private float maxY;
 
-        private IList<Collider2D> colliders;
+        public IList<Collider2D> Colliders { get; private set; }
         private IList<Interactable> interactables;
         private Animator animator;
+        private bool fallingOffLadder;
 
         private void Awake()
         {
+            Instance = this;
+
             body = GetComponent<Rigidbody2D>();
 
-            colliders = GetComponentsInChildren<Collider2D>();
+            Colliders = GetComponentsInChildren<Collider2D>();
             interactables = new List<Interactable>();
             animator = GetComponentInChildren<Animator>();
         }
@@ -46,9 +51,9 @@ namespace Game
 
         private void Update()
         {
-            if (InputManager.Vertical > 0.5 && currentLadderCan != null)
+            if ((InputManager.Vertical > 0.5 || InputManager.Vertical < -0.5) && currentLadderCan != null)
             {
-                currentLadder = currentLadderCan;
+                LadderOn();
             }
 
             //maxY = colliders.Max(x => x.bounds.max.y);
@@ -64,7 +69,7 @@ namespace Game
         {
             if (InputManager.Interact && interactables.Count > 0)
             {
-                var closest = interactables.OrderBy(x => x.Collider.Distance(colliders.First())).First();
+                var closest = interactables.OrderBy(x => x.Collider.Distance(Colliders.First())).First();
                 closest.Interact();
             }
         }
@@ -78,45 +83,6 @@ namespace Game
             else
             {
                 PlatformerPhysics();
-            }
-        }
-
-        private void LadderPhysics()
-        {
-            if (currentLadderCan == null)
-            {
-                currentLadder = null;
-                return;
-            }
-
-            body.gravityScale = 0;
-
-            body.AddForce(Vector2.right * InputManager.Horizontal * LadderHorizontalSpeed * 10, ForceMode2D.Force);
-
-            if (maxY < currentLadder.MaxHeight || InputManager.Vertical < 0)
-                body.AddForce(Vector2.up * InputManager.Vertical * LadderVerticalSpeed * 10, ForceMode2D.Force);
-
-            if (body.velocity.x > LadderHorizontalSpeed || body.velocity.x < -LadderHorizontalSpeed)
-            {
-                body.velocity = new Vector2(Mathf.Sign(body.velocity.x) * LadderHorizontalSpeed, body.velocity.y);
-            }
-
-            if (body.velocity.y > LadderVerticalSpeed || body.velocity.y < -LadderVerticalSpeed)
-            {
-                body.velocity = new Vector2(body.velocity.x, Mathf.Sign(body.velocity.y) * LadderVerticalSpeed);
-            }
-
-            if (maxY >= currentLadder.MaxHeight && InputManager.Vertical >= 0)
-                body.velocity = new Vector2(body.velocity.x, 0);
-
-            if (Mathf.Abs(InputManager.Horizontal) < 0.1)
-            {
-                body.velocity = new Vector2(0, body.velocity.y);
-            }
-
-            if (Mathf.Abs(InputManager.Vertical) < 0.1)
-            {
-                body.velocity = new Vector2(body.velocity.x, 0);
             }
         }
 
@@ -148,15 +114,82 @@ namespace Game
             }
         }
 
+        private void LadderOn()
+        {
+            currentLadder = currentLadderCan;
+            if (currentLadder.AttachedPlatform != null)
+                currentLadder.DisablePlatform();
+            // GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        }
+
+        private void LadderOff()
+        {
+            if (currentLadder.AttachedPlatform != null)
+                currentLadder.EnablePlatform();
+            currentLadder = null;
+            // GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        }
+
+        private void LadderPhysics()
+        {
+            if (currentLadderCan == null)
+            {
+                LadderOff();
+                return;
+            }
+
+            body.gravityScale = 0;
+
+            body.AddForce(Vector2.right * InputManager.Horizontal * LadderHorizontalSpeed * 10, ForceMode2D.Force);
+
+            if (maxY < currentLadder.MaxHeight || InputManager.Vertical < 0)
+            {
+                body.AddForce(Vector2.up * InputManager.Vertical * LadderVerticalSpeed * 10, ForceMode2D.Force);
+            } 
+            else if (maxY >= currentLadder.MaxHeight && InputManager.Vertical > 0.5 && currentLadder.AttachedPlatform != null)
+            {
+                body.velocity = new Vector2(body.velocity.x, 0);
+                fallingOffLadder = true;
+                currentLadderCan = null;
+                LadderOff();
+                return;
+            }
+
+            if (body.velocity.x > LadderHorizontalSpeed || body.velocity.x < -LadderHorizontalSpeed)
+            {
+                body.velocity = new Vector2(Mathf.Sign(body.velocity.x) * LadderHorizontalSpeed, body.velocity.y);
+            }
+
+            if (body.velocity.y > LadderVerticalSpeed || body.velocity.y < -LadderVerticalSpeed)
+            {
+                body.velocity = new Vector2(body.velocity.x, Mathf.Sign(body.velocity.y) * LadderVerticalSpeed);
+            }
+
+            if (maxY >= currentLadder.MaxHeight && InputManager.Vertical >= 0)
+                body.velocity = new Vector2(body.velocity.x, 0);
+
+            if (Mathf.Abs(InputManager.Horizontal) < 0.1)
+            {
+                body.velocity = new Vector2(0, body.velocity.y);
+            }
+
+            if (Mathf.Abs(InputManager.Vertical) < 0.1)
+            {
+                body.velocity = new Vector2(body.velocity.x, 0);
+            }
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Ladder"))
+            // Enter area of ladder
+            if (other.CompareTag("Ladder") && !fallingOffLadder)
             {
                 var ladder = other.GetComponent<Ladder>();
                 if (maxY < ladder.MaxHeight)
                     currentLadderCan = ladder;
             }
 
+            // Enter area of interactable
             if (other.gameObject.GetComponent<Interactable>())
             {
                 interactables.Add(other.gameObject.GetComponent<Interactable>());
@@ -168,7 +201,8 @@ namespace Game
             if (currentLadderCan != null)
                 return;
 
-            if (other.CompareTag("Ladder"))
+            // Enter area of ladder
+            if (other.CompareTag("Ladder") && !fallingOffLadder)
             {
                 var ladder = other.GetComponent<Ladder>();
                 if (maxY < ladder.MaxHeight)
@@ -178,11 +212,13 @@ namespace Game
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            // Lead area of a ladder
             if (other.CompareTag("Ladder") && currentLadderCan == other.GetComponent<Ladder>())
             {
                 currentLadderCan = null;
             }
 
+            // Leave area of an interactable
             if (other.gameObject.GetComponent<Interactable>())
             {
                 interactables.Remove(other.gameObject.GetComponent<Interactable>());
@@ -194,21 +230,21 @@ namespace Game
             if (!collision.enabled)
                 return;
 
-            if (Time.time - lastJumpTime < 0.5)
-                return;
-            
             var contacts = collision.contacts;
             foreach(var contact in contacts)
             {
-                if (Mathf.Abs(Vector2.Dot(contact.normal, Vector2.up)) > 0.9)
+                // Checking if you've landed on the ground.
+                if (Mathf.Abs(Vector2.Dot(contact.normal, Vector2.up)) > 0.9 && Time.time - lastJumpTime > 0.5)
                 {
                     isInAir = false;
                     animator.SetBool("IsOnGround", true);
+                    fallingOffLadder = false;
                 }
 
+                // Disembarking from ladder at bottom.
                 if (currentLadder != null && InputManager.Vertical < -0.5)
                 {
-                    currentLadder = null;
+                    LadderOff();
                 }
             }
         }
