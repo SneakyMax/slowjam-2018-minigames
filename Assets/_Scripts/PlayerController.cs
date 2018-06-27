@@ -32,6 +32,8 @@ namespace Game
         private IList<Interactable> interactables;
         private Animator animator;
         private bool fallingOffLadder;
+        private bool immediatelyGrabLadder;
+        public bool CannotTransition { get; set; }
 
         private void Awake()
         {
@@ -51,9 +53,11 @@ namespace Game
 
         private void Update()
         {
-            if ((InputManager.Vertical > 0.5 || InputManager.Vertical < -0.5) && currentLadderCan != null)
+            var isTryingToGetOnLadder = InputManager.Vertical > 0.5 || InputManager.Vertical < -0.5;
+            if ( (isTryingToGetOnLadder || immediatelyGrabLadder) && currentLadderCan != null)
             {
                 LadderOn();
+                immediatelyGrabLadder = false;
             }
 
             //maxY = colliders.Max(x => x.bounds.max.y);
@@ -247,6 +251,11 @@ namespace Game
                     LadderOff();
                 }
             }
+        }
+
+        public void ImmediatelyGrabLadder()
+        {
+            immediatelyGrabLadder = true;
         }
     }
 }

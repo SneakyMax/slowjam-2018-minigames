@@ -45,7 +45,7 @@ namespace Game
 
         private void ResetLadderHeight()
         {
-            Ladder.MaxHeight = GetMaxLeavesHeight();
+            // Ladder.MaxHeight = GetMaxLeavesHeight();
         }
     }
 }
