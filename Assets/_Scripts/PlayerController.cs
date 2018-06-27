@@ -73,7 +73,7 @@ namespace Game
         {
             if (InputManager.Interact && interactables.Count > 0)
             {
-                var closest = interactables.OrderBy(x => x.Collider.Distance(Colliders.First())).First();
+                var closest = interactables.OrderBy(x => x.Collider.Distance(Colliders.First()).distance).First();
                 closest.Interact();
             }
         }

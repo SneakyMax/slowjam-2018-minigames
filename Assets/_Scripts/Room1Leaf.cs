@@ -14,10 +14,14 @@ namespace Game
         public bool InitialPosition;
 
         private SpriteRenderer sprite;
+        private Animator leafAnimator;
 
         private void Awake()
         {
             sprite = GetComponentInChildren<SpriteRenderer>();
+            leafAnimator = GetComponentInChildren<Animator>();
+
+            leafAnimator.SetBool("IsRight", IsRight);
 
             if (InitialPosition)
                 Switch();
@@ -25,11 +29,12 @@ namespace Game
 
         public void Switch()
         {
-            // TODO animation
             sprite.transform.localPosition = Vector3.Scale(sprite.transform.localPosition, Vector3.left);
             IsRight = !IsRight;
 
             Changed?.Invoke();
+
+            leafAnimator.SetBool("IsRight", IsRight);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Game
         public Ladder Ladder;
 
         private IList<Room1Leaf> leaves;
+        private float originalLadderHeight;
 
         private void Awake()
         {
@@ -23,6 +24,7 @@ namespace Game
 
         private void Start()
         {
+            originalLadderHeight = Ladder.MaxHeight;
             ResetLadderHeight();
         }
 
@@ -30,12 +32,18 @@ namespace Game
         {
             var current = true;
             float maxHeight = transform.position.y;
+            var last = leaves.Last();
             foreach (var leaf in leaves)
             {
                 if (leaf.IsRight != current)
                 {
                     current = !current;
                     maxHeight = leaf.transform.position.y;
+
+                    if (leaf == last)
+                    {
+                        maxHeight = originalLadderHeight;
+                    }
                 }
                 else break;
             }
@@ -45,7 +53,7 @@ namespace Game
 
         private void ResetLadderHeight()
         {
-            // Ladder.MaxHeight = GetMaxLeavesHeight();
+            Ladder.MaxHeight = GetMaxLeavesHeight();
         }
     }
 }

@@ -1,0 +1,326 @@
+fileFormatVersion: 2
+guid: 86b56565c8623ae49b1954a8ac2440a4
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: leaf_animation_RIGHT_TO_LEFT-04-01_0
+    21300002: leaf_animation_RIGHT_TO_LEFT-04-01_1
+    21300004: leaf_animation_RIGHT_TO_LEFT-04-01_2
+    21300006: leaf_animation_RIGHT_TO_LEFT-04-01_3
+    21300008: leaf_animation_RIGHT_TO_LEFT-04-01_4
+    21300010: leaf_animation_RIGHT_TO_LEFT-04-01_5
+    21300012: leaf_animation_RIGHT_TO_LEFT-04-01_6
+    21300014: leaf_animation_RIGHT_TO_LEFT-04-01_7
+    21300016: leaf_animation_RIGHT_TO_LEFT-04-01_8
+    21300018: leaf_animation_RIGHT_TO_LEFT-04-01_9
+    21300020: leaf_animation_RIGHT_TO_LEFT-04-01_10
+  externalObjects: {}
+  serializedVersion: 5
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1285.4546
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb8b1a94a221d984b85e700810814f3c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1157.4546
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36035780b3e4485408a23b706168f6af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1029.4546
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdbbf6f96182dc54ea3ba49af320c9f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 901.4545
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bbb8006b85128b4482ae76914facbb3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 773.4545
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb417bea231904459041b63dd09609c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 645.4545
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da43f90fcdd85346b4c2621ebd73cf3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 517.4545
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb2c0393494340743bc2769cd314465d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 389.45453
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e05047223af853e4583edc9e33cc1717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 261.45453
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41c879c497e23014dab9a225ac4af580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 133.45454
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fe0e6d33f8daf943863a9224a4ea076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaf_animation_RIGHT_TO_LEFT-04-01_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5.454544
+        width: 512
+        height: 128.54546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b1d44cd3fc62b46b62a0eaaf672a55
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: facb46ab11bcad84094e3f921941149e
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
