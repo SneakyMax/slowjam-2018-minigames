@@ -75,6 +75,7 @@ namespace Game
             {
                 var closest = interactables.OrderBy(x => x.Collider.Distance(Colliders.First()).distance).First();
                 closest.Interact();
+                animator.SetTrigger("Poke");
             }
         }
 
@@ -99,6 +100,15 @@ namespace Game
             if (body.velocity.x > MoveSpeed || body.velocity.x < -MoveSpeed)
             {
                 body.velocity = new Vector2(Mathf.Sign(body.velocity.x) * MoveSpeed, body.velocity.y);
+            }
+
+            if (Mathf.Abs(InputManager.Horizontal) < 0.1)
+            {
+                animator.SetInteger("WalkDirection", 0);
+            }
+            else
+            {
+                animator.SetInteger("WalkDirection", (int)Mathf.Sign(InputManager.Horizontal));
             }
 
             if (Mathf.Abs(InputManager.Horizontal) < 0.1)

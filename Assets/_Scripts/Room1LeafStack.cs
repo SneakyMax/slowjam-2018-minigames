@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -6,10 +7,14 @@ namespace Game
 {
     public class Room1LeafStack : MonoBehaviour
     {
+        public event Action Completed;
+
         public Ladder Ladder;
 
         private IList<Room1Leaf> leaves;
         private float originalLadderHeight;
+
+        public bool IsComplete { get; set; }
 
         private void Awake()
         {
@@ -43,6 +48,8 @@ namespace Game
                     if (leaf == last)
                     {
                         maxHeight = originalLadderHeight;
+                        IsComplete = true;
+                        Completed?.Invoke();
                     }
                 }
                 else break;

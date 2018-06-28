@@ -4,11 +4,19 @@ namespace Game
 {
     public class CameraController : MonoBehaviour
     {
+        public static CameraController Instance { get; private set; }
+
+        public float ShakeAmount = 1;
+
         private Rect bounds;
         private Camera cam;
 
+        private bool shaking;
+        private bool shakeLeft;
+
         private void Awake()
         {
+            Instance = this;
             cam = GetComponent<Camera>();
         }
 
@@ -58,7 +66,24 @@ namespace Game
                 currentPosition -= new Vector3(0, camBounds.yMax - bounds.yMax, 0);
             }
 
+            if (shaking)
+            {
+                var shake = (shakeLeft ? Vector3.left : Vector3.right) * ShakeAmount;
+                shakeLeft = !shakeLeft;
+                currentPosition += shake;
+            }
+
             transform.position = new Vector3(currentPosition.x, currentPosition.y, transform.position.z);
+        }
+
+        public void ShakeOn()
+        {
+            shaking = true;
+        }
+
+        public void ShakeOff()
+        {
+            shaking = false;
         }
     }
 }
