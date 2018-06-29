@@ -16,6 +16,9 @@ namespace Game
         }
 
         private Rigidbody2D body;
+        private Animator animator;
+
+        public SpriteRenderer SpriteObj;
 
         private float newStateAt;
 
@@ -31,6 +34,7 @@ namespace Game
         private void Awake()
         {
             body = GetComponent<Rigidbody2D>();
+            animator = GetComponentInChildren<Animator>();
         }
 
         private void Start()
@@ -39,7 +43,7 @@ namespace Game
             {
                 // Ignore collisions between the MAIN collider for the character, and the player's collider(s)
                 // this will still allow the other platform collider to work.
-                Physics2D.IgnoreCollision(playerCollider, GetComponent<Collider2D>());
+                Physics2D.IgnoreCollision(playerCollider, SpriteObj.GetComponent<Collider2D>());
             }
         }
 
@@ -65,12 +69,18 @@ namespace Game
             {
                 case WanderingState.MovingLeft:
                     body.velocity = new Vector2(-MoveSpeed, body.velocity.y);
+                    animator.SetInteger("Moving", -1);
                     break;
                 case WanderingState.MovingRight:
                     body.velocity = new Vector2(MoveSpeed, body.velocity.y);
+                    animator.SetInteger("Moving", 1);
                     break;
                 case WanderingState.Still:
                     body.velocity = new Vector2(0, body.velocity.y);
+                    animator.SetInteger("Moving", 0);
+                    break;
+                case WanderingState.Hop:
+                    animator.SetInteger("Moving", 0);
                     break;
             }
         }

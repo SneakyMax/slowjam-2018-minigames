@@ -5,6 +5,7 @@ namespace Game
     public class Ladder : MonoBehaviour
     {
         public float MaxHeight;
+        public float OriginalMaxHeight;
 
         public PlatformEffector2D AttachedPlatform;
 
@@ -13,7 +14,9 @@ namespace Game
         public void Awake()
         {
             var bounds = GetComponent<Collider2D>().bounds;
+
             MaxHeight = bounds.max.y;
+            OriginalMaxHeight = MaxHeight;
 
             if (AttachedPlatform != null)
                 attachedCollider = AttachedPlatform.GetComponent<Collider2D>();

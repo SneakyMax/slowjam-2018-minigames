@@ -35,6 +35,8 @@ namespace Game
         private bool immediatelyGrabLadder;
         public bool CannotTransition { get; set; }
 
+        private float previousVerticalInput;
+
         private void Awake()
         {
             Instance = this;
@@ -53,7 +55,7 @@ namespace Game
 
         private void Update()
         {
-            var isTryingToGetOnLadder = InputManager.Vertical > 0.5 || InputManager.Vertical < -0.5;
+            var isTryingToGetOnLadder = InputManager.Vertical > 0.5 || (InputManager.Vertical < -0.5 && previousVerticalInput >= -0.5);
             if ( (isTryingToGetOnLadder || immediatelyGrabLadder) && currentLadderCan != null)
             {
                 LadderOn();
@@ -67,6 +69,8 @@ namespace Game
             ExclamationPoint.gameObject.SetActive(interactables.Count > 0);
 
             TryInteract();
+
+            previousVerticalInput = InputManager.Vertical;
         }
 
         private void TryInteract()
@@ -133,7 +137,6 @@ namespace Game
             currentLadder = currentLadderCan;
             if (currentLadder.AttachedPlatform != null)
                 currentLadder.DisablePlatform();
-            // GetComponentInChildren<SpriteRenderer>().color = Color.red;
         }
 
         private void LadderOff()
@@ -141,7 +144,6 @@ namespace Game
             if (currentLadder.AttachedPlatform != null)
                 currentLadder.EnablePlatform();
             currentLadder = null;
-            // GetComponentInChildren<SpriteRenderer>().color = Color.white;
         }
 
         private void LadderPhysics()

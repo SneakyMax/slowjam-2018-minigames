@@ -25,6 +25,8 @@ namespace Game
 
             if (InitialPosition)
                 Switch();
+
+            leafAnimator.keepAnimatorControllerStateOnDisable = true;
         }
 
         public void Switch()

@@ -12,7 +12,6 @@ namespace Game
         public Ladder Ladder;
 
         private IList<Room1Leaf> leaves;
-        private float originalLadderHeight;
 
         public bool IsComplete { get; set; }
 
@@ -29,7 +28,6 @@ namespace Game
 
         private void Start()
         {
-            originalLadderHeight = Ladder.MaxHeight;
             ResetLadderHeight();
         }
 
@@ -47,7 +45,7 @@ namespace Game
 
                     if (leaf == last)
                     {
-                        maxHeight = originalLadderHeight;
+                        maxHeight = Ladder.OriginalMaxHeight;
                         IsComplete = true;
                         Completed?.Invoke();
                     }
