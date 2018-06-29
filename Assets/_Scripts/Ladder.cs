@@ -11,15 +11,29 @@ namespace Game
 
         private Collider2D attachedCollider;
 
+        private Collider2D myCollider;
+
         public void Awake()
         {
-            var bounds = GetComponent<Collider2D>().bounds;
-
-            MaxHeight = bounds.max.y;
-            OriginalMaxHeight = MaxHeight;
-
+            myCollider = GetComponent<Collider2D>();
+            GetMaxHeight();
             if (AttachedPlatform != null)
                 attachedCollider = AttachedPlatform.GetComponent<Collider2D>();
+        }
+
+        private void GetMaxHeight()
+        {
+            MaxHeight = myCollider.bounds.max.y;
+            OriginalMaxHeight = MaxHeight;
+        }
+
+        private void Update()
+        {
+            // Moving Ladders
+            if (Mathf.Abs(MaxHeight - OriginalMaxHeight) < 0.01f)
+            {
+                GetMaxHeight();
+            }
         }
 
         public void DisablePlatform()

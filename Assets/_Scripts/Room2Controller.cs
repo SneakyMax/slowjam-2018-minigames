@@ -208,7 +208,7 @@ namespace Game
 
             yield return new WaitForSeconds(0.75f);
             ScreenFlash.Flash(FlashTime);
-
+            GameController.Instance.MoreColor();
         }
     }
 }

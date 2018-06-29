@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -38,6 +39,8 @@ namespace Game
         private float previousVerticalInput;
 
         public GameObject Holding;
+
+        public Transform HoldItemPosition;
 
         private void Awake()
         {
@@ -208,9 +211,15 @@ namespace Game
             }
 
             // Enter area of interactable
-            if (other.gameObject.GetComponent<Interactable>())
+            var interactable = other.GetComponent<Interactable>();
+            if (interactable != null && interactable.Can)
             {
-                interactables.Add(other.gameObject.GetComponent<Interactable>());
+                interactables.Add(interactable);
+            }
+
+            if (other.GetComponent<ZoomZone>())
+            {
+                CameraController.Instance.SetOrthoSize(other.GetComponent<ZoomZone>().TargetSize);
             }
         }
 
@@ -237,9 +246,15 @@ namespace Game
             }
 
             // Leave area of an interactable
-            if (other.gameObject.GetComponent<Interactable>())
+            var interactable = other.GetComponent<Interactable>();
+            if (interactable != null && interactables.Contains(interactable))
             {
-                interactables.Remove(other.gameObject.GetComponent<Interactable>());
+                interactables.Remove(interactable);
+            }
+
+            if (other.GetComponent<ZoomZone>())
+            {
+                CameraController.Instance.UnsetOrthoSize();
             }
         }
 
@@ -270,6 +285,35 @@ namespace Game
         public void ImmediatelyGrabLadder()
         {
             immediatelyGrabLadder = true;
+        }
+
+        public GameObject TakeItem()
+        {
+            var item = Holding;
+            Holding = null;
+            item.transform.parent = null;
+            return item;
+        }
+
+        public void GiveItem(GameObject currentItem)
+        {
+            if (Holding != null)
+                throw new InvalidOperationException("Already holding item - check for holding item first");
+
+            Holding = currentItem;
+            Holding.transform.parent = transform;
+            Holding.SetActive(true);
+            Holding.transform.position = HoldItemPosition.position;
+
+            var puzzlePiece = Holding.GetComponent<Room3InventoryPuzzlePiece>();
+            if (puzzlePiece != null)
+            {
+                Holding.transform.localEulerAngles = new Vector3(Holding.transform.localEulerAngles.x, Holding.transform.localEulerAngles.y, puzzlePiece.Rotation * 90);
+            }
+            else
+            {
+                Holding.transform.localEulerAngles = new Vector3();
+            }
         }
     }
 }

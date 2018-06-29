@@ -9,6 +9,8 @@ namespace Game
 
         public Collider2D Collider { get; private set; }
 
+        public bool Can = true;
+
         private void Awake()
         {
             Collider = GetComponentInChildren<Collider2D>();

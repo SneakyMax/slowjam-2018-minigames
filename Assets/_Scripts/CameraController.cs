@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace Game
 {
@@ -14,10 +15,15 @@ namespace Game
         private bool shaking;
         private bool shakeLeft;
 
+        public float OrthoChangeTime = 0.5f;
+
+        private float startOrthoSize;
+
         private void Awake()
         {
             Instance = this;
             cam = GetComponent<Camera>();
+            startOrthoSize = cam.orthographicSize;
         }
 
         private void Start()
@@ -84,6 +90,19 @@ namespace Game
         public void ShakeOff()
         {
             shaking = false;
+        }
+
+        public void SetOrthoSize(float size)
+        {
+            foreach (var childCam in GetComponentsInChildren<Camera>())
+            {
+                childCam.DOOrthoSize(size, OrthoChangeTime);
+            }
+        }
+
+        public void UnsetOrthoSize()
+        {
+            SetOrthoSize(startOrthoSize);
         }
     }
 }

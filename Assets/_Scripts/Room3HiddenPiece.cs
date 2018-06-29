@@ -5,9 +5,9 @@ namespace Game
 {
     public class Room3HiddenPiece : MonoBehaviour
     {
-        public int PieceNum;
-
         public SpriteRenderer ToRemove;
+
+        public GameObject PiecePrefab;
 
         private bool isRemoved;
 
@@ -25,6 +25,11 @@ namespace Game
 
             if (ToRemove != null)
                 ToRemove.DOFade(0, 0.5f);
+
+            var piece = Instantiate(PiecePrefab);
+            PlayerController.Instance.GiveItem(piece);
+
+            GetComponent<Interactable>().Can = false;
         }
     }
 }

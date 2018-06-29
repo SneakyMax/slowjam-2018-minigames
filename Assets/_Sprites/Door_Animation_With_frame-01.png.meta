@@ -1,0 +1,410 @@
+fileFormatVersion: 2
+guid: 2479d13523ebb354e98c359b81814a78
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Door_Animation_With_frame-01_0
+    21300002: Door_Animation_With_frame-01_1
+    21300004: Door_Animation_With_frame-01_2
+    21300006: Door_Animation_With_frame-01_3
+    21300008: Door_Animation_With_frame-01_4
+    21300010: Door_Animation_With_frame-01_5
+    21300012: Door_Animation_With_frame-01_6
+    21300014: Door_Animation_With_frame-01_7
+    21300016: Door_Animation_With_frame-01_8
+    21300018: Door_Animation_With_frame-01_9
+    21300020: Door_Animation_With_frame-01_10
+    21300022: Door_Animation_With_frame-01_11
+    21300024: Door_Animation_With_frame-01_12
+    21300026: Door_Animation_With_frame-01_13
+    21300028: Door_Animation_With_frame-01_14
+  externalObjects: {}
+  serializedVersion: 5
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 2
+    wrapV: 2
+    wrapW: 2
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3636
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 307156d97eb4f3340966af9c6a1bc33d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_1
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 3636
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8500ae3f7eb4349b628cce2f8332e3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_2
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 3636
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3f3d7e81970ce940a34fe4b14fc1834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2727
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f8d83c6c710ab45b777806334f937b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_4
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 2727
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed395128d98b36547a3fc6cd0a405200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_5
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 2727
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4670c3a4d4ff0b4eb2e3e4dc47a1085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1818
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: babcca72e81389c4088488804108272b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_7
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 1818
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3197b519afbb1dc439ecc8261d0ed605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_8
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 1818
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea107933f3c5ab64487adb928f2639fb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 909
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b52115728e5d208428690ed0f76b689c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_10
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 909
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2635e9866fbd6f41b1091a4aded4e02
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_11
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 909
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a29253d4d832f4482ae495465e06e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e8e00eff442ca4cbe45f5ffad0508c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_13
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 0
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01337db81dde3724a87826fd1722c096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Animation_With_frame-01_14
+      rect:
+        serializedVersion: 2
+        x: 1972
+        y: 0
+        width: 986
+        height: 909
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ea6cfba62239b4797cfcd66f399d85
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: a12054fefb91aae4994ce81444106b02
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
