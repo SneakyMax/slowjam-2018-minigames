@@ -7,6 +7,7 @@ TagManager:
   - Ladder
   - SolidWall
   - Character
+  - ConveyorBoxes
   layers:
   - Default
   - TransparentFX

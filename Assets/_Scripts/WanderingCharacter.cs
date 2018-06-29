@@ -12,7 +12,8 @@ namespace Game
             MovingLeft,
             Still,
             MovingRight,
-            Hop
+            Hop,
+            Sleeping
         }
 
         private Rigidbody2D body;
@@ -43,19 +44,27 @@ namespace Game
             {
                 // Ignore collisions between the MAIN collider for the character, and the player's collider(s)
                 // this will still allow the other platform collider to work.
-                Physics2D.IgnoreCollision(playerCollider, SpriteObj.GetComponent<Collider2D>());
+                Physics2D.IgnoreCollision(playerCollider, SpriteObj.GetComponent<BoxCollider2D>());
+
+                foreach (var circle in SpriteObj.GetComponents<CircleCollider2D>())
+                {
+                    Physics2D.IgnoreCollision(playerCollider, circle);
+                }
             }
         }
 
         private void FixedUpdate()
         {
+            if (currentState == WanderingState.Sleeping)
+                return;
+
             if (Time.time > newStateAt)
             {
                 // Go other way for some amount of time.
                 newStateAt = Time.time + Random.Range(MinTimeBetweenChanges, MaxTimeBetweenChanges);
 
                 var previousState = currentState;
-                while(previousState == currentState)
+                while(previousState == currentState || currentState == WanderingState.Sleeping)
                     currentState = Enum.GetValues(typeof(WanderingState)).Cast<WanderingState>().ElementAt(Random.Range(0, Enum.GetNames(typeof(WanderingState)).Length));
 
                 if (currentState == WanderingState.Hop)
@@ -82,7 +91,16 @@ namespace Game
                 case WanderingState.Hop:
                     animator.SetInteger("Moving", 0);
                     break;
+                case WanderingState.Sleeping:
+                    body.velocity = new Vector2(0, body.velocity.y);
+                    animator.SetBool("Sleeping", true);
+                    break;       
             }
+        }
+
+        public void Sleep()
+        {
+            currentState = WanderingState.Sleeping;
         }
     }
 }

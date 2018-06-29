@@ -37,6 +37,8 @@ namespace Game
 
         private float previousVerticalInput;
 
+        public GameObject Holding;
+
         private void Awake()
         {
             Instance = this;

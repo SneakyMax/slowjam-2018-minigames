@@ -29,6 +29,7 @@ namespace Game
 
         private State currentState;
         private int currentPattern = 0;
+        public float FlashTime;
 
         private int currentPositionInPattern;
 
@@ -38,7 +39,7 @@ namespace Game
         {
             Instance = this;
 
-            var availableColors = new[] { Color.red, Color.blue, Color.white, Color.magenta, Color.cyan, Color.yellow, Color.green };
+            var availableColors = new[] { Color.red, Color.blue, Color.magenta, Color.cyan, Color.yellow, Color.green };
             availableColors = availableColors.Shuffle().ToArray();
             colorMap = new Dictionary<Color, Room2LightCharacter>();
 
@@ -160,6 +161,7 @@ namespace Game
 
             if (currentPattern > patterns.Count - 1)
             {
+                StartCoroutine(CompletedPuzzle());
                 // Completed puzzle
             }
         }
@@ -167,6 +169,16 @@ namespace Game
         private IEnumerator CompletedPattern()
         {
             currentPattern++;
+            currentPositionInPattern = 0;
+
+            foreach (var obj in GameObject.FindGameObjectsWithTag("ConveyorBoxes"))
+            {
+                var boxes = obj.GetComponent<Room2ConveyorBoxes>();
+                if (boxes.Puzzle == currentPattern - 1)
+                {
+                    boxes.Move();
+                }
+            }
 
             CameraController.Instance.ShakeOn();
             foreach (var character in Characters)
@@ -180,12 +192,23 @@ namespace Game
                 character.LightOff();
             }
             yield return new WaitForSeconds(1);
-            DoShowPattern();
+
+            if (currentPattern < patterns.Count)
+                DoShowPattern();
         }
 
-        private void CompletedPuzzle()
+        private IEnumerator CompletedPuzzle()
         {
             currentState = State.Inactive;
+
+            foreach (var character in Characters)
+            {
+                character.GetComponent<WanderingCharacter>().Sleep();
+            }
+
+            yield return new WaitForSeconds(0.75f);
+            ScreenFlash.Flash(FlashTime);
+
         }
     }
 }
