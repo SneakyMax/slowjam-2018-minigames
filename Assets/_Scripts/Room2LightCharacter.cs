@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 namespace Game
@@ -14,10 +15,9 @@ namespace Game
             LightOff();
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            var player = other.GetComponentInParent<PlayerController>();
-            if (player != null)
+            if (other.gameObject.GetComponentInParent<PlayerController>() && other.contacts.Any(x => Vector2.Dot(Vector2.up, x.normal) < -0.95))
             {
                 Room2Controller.Instance.Mark(Color);
             }

@@ -40,6 +40,19 @@ namespace Game
 
         private void Start()
         {
+            IgnorePlayerColliders();
+        }
+
+        private void OnEnable()
+        {
+            IgnorePlayerColliders();
+        }
+
+        private void IgnorePlayerColliders()
+        {
+            if (PlayerController.Instance == null)
+                return;
+
             foreach (var playerCollider in PlayerController.Instance.Colliders)
             {
                 // Ignore collisions between the MAIN collider for the character, and the player's collider(s)
@@ -90,17 +103,15 @@ namespace Game
                     break;
                 case WanderingState.Hop:
                     animator.SetInteger("Moving", 0);
-                    break;
-                case WanderingState.Sleeping:
-                    body.velocity = new Vector2(0, body.velocity.y);
-                    animator.SetBool("Sleeping", true);
-                    break;       
+                    break;    
             }
         }
 
         public void Sleep()
         {
             currentState = WanderingState.Sleeping;
+            animator.SetInteger("Moving", 0);
+            animator.SetBool("Sleeping", true);
         }
     }
 }

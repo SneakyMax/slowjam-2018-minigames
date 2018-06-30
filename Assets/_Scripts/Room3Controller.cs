@@ -50,6 +50,7 @@ namespace Game
         {
             Solved = true;
             OnSolved?.Invoke();
+
             yield return new WaitForSeconds(0.75f);
 
             CameraController.Instance.ShakeOn();

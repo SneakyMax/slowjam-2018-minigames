@@ -17,10 +17,10 @@ namespace Game
             spriteRenderer.enabled = true;
         }
 
-        public static void Flash(float time)
+        public static void Flash(float time, Ease ease = Ease.OutQuad)
         {
             Instance.spriteRenderer.color = new Color(Instance.spriteRenderer.color.r, Instance.spriteRenderer.color.g, Instance.spriteRenderer.color.b, 1);
-            Instance.spriteRenderer.DOFade(0, time).SetEase(Ease.OutQuad);
+            Instance.spriteRenderer.DOFade(0, time).SetEase(ease);
         }
     }
 }

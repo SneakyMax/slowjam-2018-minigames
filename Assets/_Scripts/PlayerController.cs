@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,8 +21,6 @@ namespace Game
         public SpriteRenderer ArrowUp;
         public SpriteRenderer ExclamationPoint;
 
-        private Rigidbody2D body;
-
         private bool isInAir;
         private float lastJumpTime;
         private Ladder currentLadder;
@@ -34,7 +33,10 @@ namespace Game
         private Animator animator;
         private bool fallingOffLadder;
         private bool immediatelyGrabLadder;
+        
         public bool CannotTransition { get; set; }
+        
+        public Rigidbody2D Body { get; private set; }
 
         private float previousVerticalInput;
 
@@ -46,7 +48,7 @@ namespace Game
         {
             Instance = this;
 
-            body = GetComponent<Rigidbody2D>();
+            Body = GetComponent<Rigidbody2D>();
 
             Colliders = GetComponentsInChildren<Collider2D>();
             interactables = new List<Interactable>();
@@ -76,6 +78,14 @@ namespace Game
             TryInteract();
 
             previousVerticalInput = InputManager.Vertical;
+
+            for (var i = interactables.Count - 1; i >= 0; i--)
+            {
+                if (interactables[i].Can == false)
+                {
+                    interactables.RemoveAt(i);
+                }
+            }
         }
 
         private void TryInteract()
@@ -102,13 +112,13 @@ namespace Game
 
         private void PlatformerPhysics()
         {
-            body.gravityScale = 1;
+            Body.gravityScale = 1;
 
-            body.AddForce(Vector2.right * InputManager.Horizontal * MoveSpeed * 10, ForceMode2D.Force);
+            Body.AddForce(Vector2.right * InputManager.Horizontal * MoveSpeed * 10, ForceMode2D.Force);
 
-            if (body.velocity.x > MoveSpeed || body.velocity.x < -MoveSpeed)
+            if (Body.velocity.x > MoveSpeed || Body.velocity.x < -MoveSpeed)
             {
-                body.velocity = new Vector2(Mathf.Sign(body.velocity.x) * MoveSpeed, body.velocity.y);
+                Body.velocity = new Vector2(Mathf.Sign(Body.velocity.x) * MoveSpeed, Body.velocity.y);
             }
 
             if (Mathf.Abs(InputManager.Horizontal) < 0.1)
@@ -122,15 +132,15 @@ namespace Game
 
             if (Mathf.Abs(InputManager.Horizontal) < 0.1)
             {
-                body.velocity = new Vector2(
-                    Mathf.Sign(body.velocity.x) * Mathf.Min(1, Mathf.Abs(body.velocity.x)),
-                    body.velocity.y);
+                Body.velocity = new Vector2(
+                    Mathf.Sign(Body.velocity.x) * Mathf.Min(1, Mathf.Abs(Body.velocity.x)),
+                    Body.velocity.y);
             }
 
             if (InputManager.Jump && !isInAir)
             {
                 isInAir = true;
-                body.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+                Body.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
                 lastJumpTime = Time.time;
                 animator.SetTrigger("Jump");
                 animator.SetBool("IsOnGround", false);
@@ -159,44 +169,44 @@ namespace Game
                 return;
             }
 
-            body.gravityScale = 0;
+            Body.gravityScale = 0;
 
-            body.AddForce(Vector2.right * InputManager.Horizontal * LadderHorizontalSpeed * 10, ForceMode2D.Force);
+            Body.AddForce(Vector2.right * InputManager.Horizontal * LadderHorizontalSpeed * 10, ForceMode2D.Force);
 
             if (maxY < currentLadder.MaxHeight || InputManager.Vertical < 0)
             {
-                body.AddForce(Vector2.up * InputManager.Vertical * LadderVerticalSpeed * 10, ForceMode2D.Force);
+                Body.AddForce(Vector2.up * InputManager.Vertical * LadderVerticalSpeed * 10, ForceMode2D.Force);
             } 
             else if (maxY >= currentLadder.MaxHeight && InputManager.Vertical > 0.5 && currentLadder.AttachedPlatform != null)
             {
-                body.velocity = new Vector2(body.velocity.x, 0);
+                Body.velocity = new Vector2(Body.velocity.x, 0);
                 fallingOffLadder = true;
                 currentLadderCan = null;
                 LadderOff();
                 return;
             }
 
-            if (body.velocity.x > LadderHorizontalSpeed || body.velocity.x < -LadderHorizontalSpeed)
+            if (Body.velocity.x > LadderHorizontalSpeed || Body.velocity.x < -LadderHorizontalSpeed)
             {
-                body.velocity = new Vector2(Mathf.Sign(body.velocity.x) * LadderHorizontalSpeed, body.velocity.y);
+                Body.velocity = new Vector2(Mathf.Sign(Body.velocity.x) * LadderHorizontalSpeed, Body.velocity.y);
             }
 
-            if (body.velocity.y > LadderVerticalSpeed || body.velocity.y < -LadderVerticalSpeed)
+            if (Body.velocity.y > LadderVerticalSpeed || Body.velocity.y < -LadderVerticalSpeed)
             {
-                body.velocity = new Vector2(body.velocity.x, Mathf.Sign(body.velocity.y) * LadderVerticalSpeed);
+                Body.velocity = new Vector2(Body.velocity.x, Mathf.Sign(Body.velocity.y) * LadderVerticalSpeed);
             }
 
             if (maxY >= currentLadder.MaxHeight && InputManager.Vertical >= 0)
-                body.velocity = new Vector2(body.velocity.x, 0);
+                Body.velocity = new Vector2(Body.velocity.x, 0);
 
             if (Mathf.Abs(InputManager.Horizontal) < 0.1)
             {
-                body.velocity = new Vector2(0, body.velocity.y);
+                Body.velocity = new Vector2(0, Body.velocity.y);
             }
 
             if (Mathf.Abs(InputManager.Vertical) < 0.1)
             {
-                body.velocity = new Vector2(body.velocity.x, 0);
+                Body.velocity = new Vector2(Body.velocity.x, 0);
             }
         }
 
@@ -211,7 +221,7 @@ namespace Game
             }
 
             // Enter area of interactable
-            var interactable = other.GetComponent<Interactable>();
+            var interactable = other.GetComponentInParent<Interactable>();
             if (interactable != null && interactable.Can)
             {
                 interactables.Add(interactable);
@@ -246,7 +256,7 @@ namespace Game
             }
 
             // Leave area of an interactable
-            var interactable = other.GetComponent<Interactable>();
+            var interactable = other.GetComponentInParent<Interactable>();
             if (interactable != null && interactables.Contains(interactable))
             {
                 interactables.Remove(interactable);
@@ -314,6 +324,17 @@ namespace Game
             {
                 Holding.transform.localEulerAngles = new Vector3();
             }
+        }
+
+        private IEnumerator CanTransitionAfterDelay()
+        {
+            yield return new WaitForSeconds(2);
+            CannotTransition = false;
+        }
+
+        public void DelayTransitonable()
+        {
+            StartCoroutine(CanTransitionAfterDelay());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Game
 {
@@ -29,7 +30,7 @@ namespace Game
 
             PlayerController.Instance.ImmediatelyGrabLadder();
             PlayerController.Instance.CannotTransition = true;
-
+            PlayerController.Instance.DelayTransitonable();
         }
     }
 }

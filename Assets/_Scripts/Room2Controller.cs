@@ -201,12 +201,14 @@ namespace Game
         {
             currentState = State.Inactive;
 
+            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(0.75f);
+            
             foreach (var character in Characters)
             {
                 character.GetComponent<WanderingCharacter>().Sleep();
             }
-
-            yield return new WaitForSeconds(0.75f);
+            
             ScreenFlash.Flash(FlashTime);
             GameController.Instance.MoreColor();
         }

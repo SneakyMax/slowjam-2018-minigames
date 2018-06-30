@@ -19,7 +19,6 @@ namespace Game
         public int CorrectRotation;
 
         private GameObject item;
-        private int currentIndex;
 
         private int rotation;
 
@@ -45,7 +44,6 @@ namespace Game
                 item = PlayerController.Instance.TakeItem();
                 item.SetActive(false);
                 Target.sprite = piece.SpriteRenderer.sprite;
-                currentIndex = piece.Index;
                 rotation = piece.Rotation;
                 Target.transform.localEulerAngles = new Vector3(Target.transform.localRotation.x, Target.transform.localRotation.y, rotation * 90);
             }
@@ -57,7 +55,6 @@ namespace Game
                 if (!playerHasItem)
                 {
                     Target.sprite = null;
-                    currentIndex = -1;
                     rotation = 0;
                     item = null;
                 }

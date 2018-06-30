@@ -13,6 +13,7 @@ namespace Game
         public GameObject Room2;
         public GameObject Room3;
         public GameObject Room4;
+        public GameObject Room5;
 
         [Header("Edges")]
         public Transform Left;
@@ -29,7 +30,7 @@ namespace Game
         private void Awake()
         {
             Instance = this;
-            rooms = new List<GameObject> { Room1, Room2, Room3, Room4 };
+            rooms = new List<GameObject> { Room1, Room2, Room3, Room4, Room5 };
         }
 
         public void GoTo(int roomIndex)
