@@ -8,6 +8,13 @@ namespace Game
 {
     public class PlayerController : MonoBehaviour
     {
+        public enum ControlledState
+        {
+            Idle,
+            MoveLeft,
+            MoveRight
+        }
+
         public static PlayerController Instance { get; private set; }
 
         public float MoveSpeed = 4;
@@ -44,6 +51,10 @@ namespace Game
 
         public Transform HoldItemPosition;
 
+        public bool IsControlled { get; set; }
+
+        public ControlledState ForceMovement { get; set; }
+
         private void Awake()
         {
             Instance = this;
@@ -53,6 +64,7 @@ namespace Game
             Colliders = GetComponentsInChildren<Collider2D>();
             interactables = new List<Interactable>();
             animator = GetComponentInChildren<Animator>();
+            ForceMovement = ControlledState.Idle;
         }
 
         private void Start()
@@ -81,7 +93,7 @@ namespace Game
 
             for (var i = interactables.Count - 1; i >= 0; i--)
             {
-                if (interactables[i].Can == false)
+                if (interactables[i].Can == false || !interactables[i].isActiveAndEnabled)
                 {
                     interactables.RemoveAt(i);
                 }
@@ -100,13 +112,36 @@ namespace Game
 
         public void FixedUpdate()
         {
-            if (currentLadder != null)
+            if (IsControlled)
+            {
+                ControlledPhysics();
+            }
+            else if (currentLadder != null)
             {
                 LadderPhysics();
             }
             else
             {
                 PlatformerPhysics();
+            }
+        }
+
+        private void ControlledPhysics()
+        {
+            switch (ForceMovement)
+            {
+                case ControlledState.MoveLeft:
+                    Body.velocity = new Vector2(-MoveSpeed, Body.velocity.y);
+                    animator.SetInteger("Moving", -1);
+                    break;
+                case ControlledState.MoveRight:
+                    Body.velocity = new Vector2(MoveSpeed, Body.velocity.y);
+                    animator.SetInteger("Moving", 1);
+                    break;
+                case ControlledState.Idle:
+                    Body.velocity = new Vector2(0, Body.velocity.y);
+                    animator.SetInteger("Moving", 0);
+                    break; 
             }
         }
 

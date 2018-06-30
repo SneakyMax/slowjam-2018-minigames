@@ -75,11 +75,11 @@ namespace Game
 
         private IEnumerator CompletedPuzzle()
         {
+            ExitDoorArea.GetComponent<Interactable>().Can = true;
             CameraController.Instance.ShakeOn();
             Room4Door.Instance.Open();
             yield return new WaitForSeconds(DoorOpenTime);
             CameraController.Instance.ShakeOff();
-            ExitDoorArea.GetComponent<Interactable>().Can = true;
         }
     }
 }

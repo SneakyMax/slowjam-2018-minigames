@@ -6,7 +6,7 @@ namespace Game
     public class ScreenFlash : MonoBehaviour
     {
         public static ScreenFlash Instance { get; private set; }
-
+        
         private SpriteRenderer spriteRenderer;
 
         private void Awake()
