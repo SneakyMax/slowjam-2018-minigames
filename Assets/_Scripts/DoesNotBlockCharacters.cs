@@ -10,7 +10,10 @@ namespace Game
             var characters = GameObject.FindGameObjectsWithTag("Character");
             foreach (var character in characters)
             {
-                Physics2D.IgnoreCollision(character.GetComponent<Collider2D>(), myCollider);
+                foreach (var charCollider in character.GetComponentsInChildren<Collider2D>())
+                {
+                    Physics2D.IgnoreCollision(charCollider, myCollider);
+                }
             }
         }
     }

@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: e685daf01d8da8446b3f0fafc49fb456
+guid: 8b934c7d9083334478daec4ed319eb1b
 TextureImporter:
   fileIDToRecycleName:
-    21300000: boxes_walk_01-01-r_0
-    21300002: boxes_walk_01-01-r_1
-    21300004: boxes_walk_01-01-r_2
-    21300006: boxes_walk_01-01-r_3
-    21300008: boxes_walk_01-01-r_4
-    21300010: boxes_walk_01-01-r_5
-    21300012: boxes_walk_01-01-r_6
+    21300000: floppy_walk_R_0
+    21300002: floppy_walk_R_1
+    21300004: floppy_walk_R_2
+    21300006: floppy_walk_R_3
+    21300008: floppy_walk_R_4
+    21300010: floppy_walk_R_5
+    21300012: floppy_walk_R_6
+    21300014: floppy_walk_R_7
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -50,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -89,13 +90,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_0
+      name: floppy_walk_R_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1236
-        width: 606
-        height: 618
+        x: 1
+        y: 594
+        width: 290
+        height: 250
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,19 +104,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4baf1d33e8846394e89cbbde10f62b64
+      spriteID: df871950abdcc954e8f89f0763609ed3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_1
+      name: floppy_walk_R_1
       rect:
         serializedVersion: 2
-        x: 606
-        y: 1236
-        width: 606
-        height: 618
+        x: 302
+        y: 594
+        width: 270
+        height: 266
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98fd154fae333fb449591559bf0b0d92
+      spriteID: a72ff1b9f9c75f94dbcc48e884792988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_2
+      name: floppy_walk_R_2
       rect:
         serializedVersion: 2
-        x: 1212
-        y: 1236
-        width: 606
-        height: 618
+        x: 586
+        y: 594
+        width: 283
+        height: 288
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,19 +144,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fe1a55c118bf844f8b0e316a09cd678
+      spriteID: 6422218af7143ad41854363ffc670f41
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_3
+      name: floppy_walk_R_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 618
-        width: 606
-        height: 618
+        x: 10
+        y: 297
+        width: 272
+        height: 264
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,19 +164,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ff6f210c5f570f4ea0927827a706fc8
+      spriteID: 6e081e1cc48d6bb4b8abe4e1c4c1fc6b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_4
+      name: floppy_walk_R_4
       rect:
         serializedVersion: 2
-        x: 606
-        y: 618
-        width: 606
-        height: 618
+        x: 300
+        y: 297
+        width: 274
+        height: 265
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,19 +184,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1d3c88da8d21424ea208a89504b2170
+      spriteID: c2405416df159d84da811c8c6f90ee0d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_5
+      name: floppy_walk_R_5
       rect:
         serializedVersion: 2
-        x: 1212
-        y: 618
-        width: 606
-        height: 618
+        x: 587
+        y: 297
+        width: 280
+        height: 290
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,19 +204,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a1f797eaa013a74eabd1f2dceb35d98
+      spriteID: eaed8b7cc18168c46ae09aa37f911166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_6
+      name: floppy_walk_R_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 606
-        height: 618
+        width: 291
+        height: 297
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,7 +224,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1908db40f4c56c345b66d703653c214a
+      spriteID: 3ad49665500c6d94ea0343576dfcc8ca
       vertices: []
       indices: 
       edges: []
@@ -231,7 +232,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ce4ab70ea589f1740804e1263f9771f8
+    spriteID: d10ccc734f32b1e478015fa29a88c3bb
     vertices: []
     indices: 
     edges: []

@@ -36,6 +36,7 @@ namespace Game
         {
             body = GetComponent<Rigidbody2D>();
             animator = GetComponentInChildren<Animator>();
+            animator.keepAnimatorControllerStateOnDisable = true;
         }
 
         private void Start()
@@ -55,11 +56,7 @@ namespace Game
 
             foreach (var playerCollider in PlayerController.Instance.Colliders)
             {
-                // Ignore collisions between the MAIN collider for the character, and the player's collider(s)
-                // this will still allow the other platform collider to work.
-                Physics2D.IgnoreCollision(playerCollider, SpriteObj.GetComponent<BoxCollider2D>());
-
-                foreach (var circle in SpriteObj.GetComponents<CircleCollider2D>())
+                foreach (var circle in SpriteObj.GetComponentsInChildren<Collider2D>())
                 {
                     Physics2D.IgnoreCollision(playerCollider, circle);
                 }

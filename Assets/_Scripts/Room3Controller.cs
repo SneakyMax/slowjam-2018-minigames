@@ -10,6 +10,8 @@ namespace Game
 
         public Room3PuzzlePlacer[] Placers;
 
+        public WanderingCharacter[] Characters;
+
         public bool Solved { get; private set; }
 
         public float FlashTime;
@@ -57,6 +59,11 @@ namespace Game
             Room3FinalLadder.Instance.Move();
             yield return new WaitForSeconds(Room3FinalLadder.Instance.MoveTime);
             CameraController.Instance.ShakeOff();
+
+            foreach (var character in Characters)
+            {
+                character.Sleep();
+            }
 
             ScreenFlash.Flash(FlashTime);
             GameController.Instance.MoreColor();

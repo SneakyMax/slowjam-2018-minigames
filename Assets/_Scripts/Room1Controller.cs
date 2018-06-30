@@ -18,6 +18,11 @@ namespace Game
             TargetStack.Completed += () => StartCoroutine(Room1Finished());
         }
 
+        private void Start()
+        {
+            ScreenFlash.Flash(1);
+        }
+
         private IEnumerator Room1Finished()
         {
             Finished = true;

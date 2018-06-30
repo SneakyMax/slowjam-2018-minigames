@@ -39,7 +39,7 @@ namespace Game
 
             FadeOverlay.enabled = true;
             FadeOverlay.color = new Color(FadeOverlay.color.r, FadeOverlay.color.g, FadeOverlay.color.b, 0);
-            FadeOverlay.DOFade(1, 3);
+            FadeOverlay.DOFade(1, 2);
 
             yield return new WaitForSeconds(2);
 

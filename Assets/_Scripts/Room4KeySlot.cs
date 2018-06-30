@@ -17,22 +17,22 @@ namespace Game
 
         private void OnInteract()
         {
-//            var holding = PlayerController.Instance.Holding;
-//            
-//            if (holding == null)
-//                return;
-//            
-//            var key = holding.GetComponent<Room4InventoryKey>();
-//            if (key == null || key.Index != NeededKeyIndex)
-//                return;
-//            
-//            var item = PlayerController.Instance.TakeItem();
+            var holding = PlayerController.Instance.Holding;
+            
+            if (holding == null)
+                return;
+            
+            var key = holding.GetComponent<Room4InventoryKey>();
+            if (key == null || key.Index != NeededKeyIndex)
+                return;
+            
+            var item = PlayerController.Instance.TakeItem();
             Room4Controller.Instance.OnInsertedKey();
             GetComponent<Interactable>().Can = false;
-//
-//            Destroy(item);
-//
-//            ActiveSprite.enabled = true;
+
+            Destroy(item);
+
+            ActiveSprite.enabled = true;
         }
     }
 }

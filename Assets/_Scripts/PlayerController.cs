@@ -132,15 +132,15 @@ namespace Game
             {
                 case ControlledState.MoveLeft:
                     Body.velocity = new Vector2(-MoveSpeed, Body.velocity.y);
-                    animator.SetInteger("Moving", -1);
+                    animator.SetInteger("WalkDirection", -1);
                     break;
                 case ControlledState.MoveRight:
                     Body.velocity = new Vector2(MoveSpeed, Body.velocity.y);
-                    animator.SetInteger("Moving", 1);
+                    animator.SetInteger("WalkDirection", 1);
                     break;
                 case ControlledState.Idle:
                     Body.velocity = new Vector2(0, Body.velocity.y);
-                    animator.SetInteger("Moving", 0);
+                    animator.SetInteger("WalkDirection", 0);
                     break; 
             }
         }

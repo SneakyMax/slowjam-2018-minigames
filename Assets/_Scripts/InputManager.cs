@@ -6,8 +6,29 @@ using XInputDotNetPure;
 
 namespace Game
 {
-    public static class InputManager
+    public class InputManager : MonoBehaviour
     {
+        public static InputManager Instance
+        {
+            get
+            {
+                if (instance != null)
+                    return instance;
+                var obj = new GameObject("InputManager");
+                instance = obj.AddComponent<InputManager>();
+                return instance;
+            }
+        }
+
+        private static InputManager instance;
+
+        private GamePadState previousState;
+
+        private void LateUpdate()
+        {
+            previousState = GamePad.GetState(0);
+        }
+
         private static float KeyboardOrControllerAxis(IEnumerable<KeyCode> negative, IEnumerable<KeyCode> positive, Func<GamePadThumbSticks, float> getStick)
         {
             if (negative.Any(Input.GetKey))
@@ -22,7 +43,8 @@ namespace Game
             if (key.Any(Input.GetKeyDown))
                 return true;
 
-            return getButton(GamePad.GetState(PlayerIndex.One).Buttons) == ButtonState.Pressed;
+            return getButton(Instance.previousState.Buttons) != ButtonState.Pressed
+                   && getButton(GamePad.GetState(PlayerIndex.One).Buttons) == ButtonState.Pressed;
         }
 
         private static bool KeyboardOrControllerButtonDown(IEnumerable<KeyCode> key, Func<GamePadButtons, bool> getButton)
@@ -61,6 +83,11 @@ namespace Game
         public static bool Ok
         {
             get { return KeyboardOrControllerButtonDown(new[] { KeyCode.Space, KeyCode.Return, KeyCode.E }, buttons => buttons.A == ButtonState.Pressed || buttons.X == ButtonState.Pressed); }
+        }
+
+        public static bool Start
+        {
+            get { return KeyboardOrControllerButtonDown(new KeyCode[] { }, x => x.Start); }
         }
     }
 }

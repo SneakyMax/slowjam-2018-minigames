@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-guid: e685daf01d8da8446b3f0fafc49fb456
+guid: 7a1754513af7ec644978de92da03f554
 TextureImporter:
   fileIDToRecycleName:
-    21300000: boxes_walk_01-01-r_0
-    21300002: boxes_walk_01-01-r_1
-    21300004: boxes_walk_01-01-r_2
-    21300006: boxes_walk_01-01-r_3
-    21300008: boxes_walk_01-01-r_4
-    21300010: boxes_walk_01-01-r_5
-    21300012: boxes_walk_01-01-r_6
+    21300000: floppy_sleep_0
+    21300002: floppy_sleep_1
+    21300004: floppy_sleep_2
+    21300006: floppy_sleep_3
+    21300008: floppy_sleep_4
+    21300010: floppy_sleep_5
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -89,13 +88,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_0
+      name: floppy_sleep_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1236
-        width: 606
-        height: 618
+        x: 13
+        y: 502
+        width: 580
+        height: 502
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,19 +102,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4baf1d33e8846394e89cbbde10f62b64
+      spriteID: 819cb3291990c294babec3bff7b86248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_1
+      name: floppy_sleep_1
       rect:
         serializedVersion: 2
-        x: 606
-        y: 1236
-        width: 606
-        height: 618
+        x: 620
+        y: 502
+        width: 579
+        height: 477
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,99 +122,79 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98fd154fae333fb449591559bf0b0d92
+      spriteID: c1c8b1cc471375447b16cb0b03f7fb24
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boxes_walk_01-01-r_2
+      name: floppy_sleep_2
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 502
+        width: 580
+        height: 467
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ee056a031224eb4192aaf65c47871d1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floppy_sleep_3
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 0
+        width: 580
+        height: 443
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30148861293bb7a42a97f18d75489be0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floppy_sleep_4
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 0
+        width: 583
+        height: 434
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea52bdb775504d942a0f60b9bd0d1141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floppy_sleep_5
       rect:
         serializedVersion: 2
         x: 1212
-        y: 1236
-        width: 606
-        height: 618
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5fe1a55c118bf844f8b0e316a09cd678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boxes_walk_01-01-r_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 618
-        width: 606
-        height: 618
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ff6f210c5f570f4ea0927827a706fc8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boxes_walk_01-01-r_4
-      rect:
-        serializedVersion: 2
-        x: 606
-        y: 618
-        width: 606
-        height: 618
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1d3c88da8d21424ea208a89504b2170
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boxes_walk_01-01-r_5
-      rect:
-        serializedVersion: 2
-        x: 1212
-        y: 618
-        width: 606
-        height: 618
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a1f797eaa013a74eabd1f2dceb35d98
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boxes_walk_01-01-r_6
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 0
         width: 606
-        height: 618
+        height: 412
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,7 +202,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1908db40f4c56c345b66d703653c214a
+      spriteID: 4d40009726ece344fa9f88f05959f6fc
       vertices: []
       indices: 
       edges: []
@@ -231,7 +210,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ce4ab70ea589f1740804e1263f9771f8
+    spriteID: cf2256eba79c2d74bb569e274007aca9
     vertices: []
     indices: 
     edges: []
