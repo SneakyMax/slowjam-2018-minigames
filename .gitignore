@@ -4,6 +4,7 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+LifeInColor/
 
 # Visual Studio cache directory
 .vs/
